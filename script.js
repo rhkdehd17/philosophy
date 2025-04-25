@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         writeSection.classList.add("hidden");
         listSection.classList.remove("hidden");
         diaryDetail.classList.add("hidden");
+        diaryEntries.style.display = "block";
         loadDiaryEntries();
       }
     });
@@ -110,14 +111,21 @@ document.addEventListener("DOMContentLoaded", () => {
     saveDiaryEntry(diary);
     diaryForm.reset();
 
-    // 저장 완료 메시지
+    // 저장 완료 메시지와 함께 목록 화면으로 이동
     alert("일기가 저장되었습니다.");
+
+    // 목록 화면으로 자동 전환
+    navLinks.forEach((link) => {
+      if (link.dataset.view === "list") {
+        link.click();
+      }
+    });
   });
 
   // 목록으로 돌아가기
   backToList.addEventListener("click", () => {
     diaryDetail.classList.add("hidden");
-    loadDiaryEntries();
+    diaryEntries.style.display = "block";
   });
 
   // 일기 저장 함수
