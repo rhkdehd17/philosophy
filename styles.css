@@ -1,0 +1,180 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #333;
+  --border-color: #ddd;
+  --header-border: #eee;
+  --button-bg: #2c3e50;
+  --button-hover: #34495e;
+  --form-bg: #ffffff;
+  --nav-hover: #f0f0f0;
+  --nav-text: #666;
+  --font-size-base: 16px;
+}
+
+[data-theme="dark"] {
+  --background-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --border-color: #404040;
+  --header-border: #333;
+  --button-bg: #4a90e2;
+  --button-hover: #357abd;
+  --form-bg: #2d2d2d;
+  --nav-hover: #333;
+  --nav-text: #b0b0b0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  transition: background-color 0.3s, color 0.3s;
+  font-size: var(--font-size-base);
+}
+
+header {
+  margin-bottom: 40px;
+  padding: 20px 0;
+  border-bottom: 2px solid var(--header-border);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dark-mode-toggle {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--button-bg);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--button-hover);
+}
+
+h1 {
+  font-size: 2em;
+  color: var(--text-color);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: var(--nav-hover);
+  color: var(--text-color);
+}
+
+.diary-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: var(--form-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 200px;
+}
+
+button[type="submit"] {
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--button-hover);
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.font-size-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.font-button {
+  padding: 4px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.font-button:hover {
+  background-color: var(--nav-hover);
+}
+
+#decreaseFont {
+  font-size: 12px;
+}
+
+#resetFont {
+  font-size: 14px;
+}
+
+#increaseFont {
+  font-size: 16px;
+}
