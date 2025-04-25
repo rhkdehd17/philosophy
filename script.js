@@ -67,8 +67,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const backToList = document.getElementById("backToList");
   const navLinks = document.querySelectorAll(".nav-link");
 
-  // 초기 데이터 로드
+  // 초기 데이터 로드 및 마지막 상태 복원
   loadDiaryEntries();
+  restoreLastView();
+
+  // 마지막 상태 복원 함수
+  function restoreLastView() {
+    const lastView = localStorage.getItem("lastView") || "write";
+    navLinks.forEach((link) => {
+      if (link.dataset.view === lastView) {
+        link.click();
+      }
+    });
+  }
 
   // 네비게이션 이벤트
   navLinks.forEach((link) => {
@@ -79,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
       navLinks.forEach((l) => l.classList.remove("active"));
       e.target.classList.add("active");
 
+      // 현재 뷰 저장
+      localStorage.setItem("lastView", view);
+
       if (view === "write") {
         writeSection.classList.remove("hidden");
         listSection.classList.add("hidden");
@@ -86,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         writeSection.classList.add("hidden");
         listSection.classList.remove("hidden");
         diaryDetail.classList.add("hidden");
-        diaryEntries.style.display = "block";
+        diaryEntries.classList.remove("hidden");
         loadDiaryEntries();
       }
     });
@@ -125,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 목록으로 돌아가기
   backToList.addEventListener("click", () => {
     diaryDetail.classList.add("hidden");
-    diaryEntries.style.display = "block";
+    diaryEntries.classList.remove("hidden");
   });
 
   // 일기 저장 함수
@@ -174,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("detailDate").textContent = formatDate(entry.date);
     document.getElementById("detailContent").textContent = entry.content;
 
-    diaryEntries.style.display = "none";
+    diaryEntries.classList.add("hidden");
     diaryDetail.classList.remove("hidden");
   }
 
